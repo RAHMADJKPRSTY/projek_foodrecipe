@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_recipe/models/recipe.api.dart';
 import 'package:food_recipe/models/recipe.dart';
+import 'package:food_recipe/views/detail_recipe.dart';
 import 'package:food_recipe/views/widgets/recipe_card.dart';
 
 class HomePage extends StatefulWidget {
@@ -30,12 +31,16 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          backgroundColor: Colors.white,
           title: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Icon(Icons.menu),
+              Icon(
+                Icons.menu,
+                color: Colors.black,
+              ),
               SizedBox(width: 10),
-              Text('List Resep Makanan')
+              Text('List Resep Makanan', style: TextStyle(color: Colors.black))
             ],
           ),
         ),
@@ -44,11 +49,26 @@ class _HomePageState extends State<HomePage> {
             : ListView.builder(
                 itemCount: _recipes.length,
                 itemBuilder: (context, index) {
-                  return RecipeCard(
-                      title: _recipes[index].name,
-                      cookTime: _recipes[index].totalTime,
-                      rating: _recipes[index].rating.toString(),
-                      thumbnailUrl: _recipes[index].images);
+                  return GestureDetector(
+                    child: RecipeCard(
+                        title: _recipes[index].name,
+                        cookTime: _recipes[index].totalTime,
+                        rating: _recipes[index].rating.toString(),
+                        thumbnailUrl: _recipes[index].images),
+                    onTap: () => {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => DetailRecipe(
+                              name: _recipes[index].name,
+                              totalTime: _recipes[index].totalTime,
+                              rating: _recipes[index].rating.toString(),
+                              images: _recipes[index].images,
+                              description: _recipes[index].description,
+                            ),
+                          )),
+                    },
+                  );
                 },
               ));
   }
