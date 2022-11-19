@@ -36,11 +36,11 @@ class _HomePageState extends State<HomePage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Icon(
-                Icons.menu,
+                Icons.menu_book,
                 color: Colors.black,
               ),
               SizedBox(width: 10),
-              Text('List Resep Makanan', style: TextStyle(color: Colors.black))
+              Text('Buku Resep Makanan', style: TextStyle(color: Colors.black))
             ],
           ),
         ),
