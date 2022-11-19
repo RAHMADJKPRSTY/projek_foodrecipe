@@ -7,9 +7,15 @@ class DetailRecipe extends StatelessWidget {
   final String rating;
   final String totalTime;
   final String description;
+  final String videoUrl;
 
   DetailRecipe(
-      {this.name, this.images, this.rating, this.totalTime, this.description});
+      {this.name,
+      this.images,
+      this.rating,
+      this.totalTime,
+      this.description,
+      this.videoUrl});
 
   @override
   Widget build(BuildContext context) {
@@ -19,10 +25,7 @@ class DetailRecipe extends StatelessWidget {
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(
-              Icons.restaurant_menu,
-              color: Colors.white,
-            ),
+            Icon(Icons.restaurant_menu),
             SizedBox(width: 10),
             Text('Makanan',
                 textAlign: TextAlign.center,
@@ -33,10 +36,12 @@ class DetailRecipe extends StatelessWidget {
       body: SafeArea(
         child: Column(mainAxisSize: MainAxisSize.max, children: [
           RecipeCard(
-              title: name,
-              cookTime: totalTime,
-              rating: rating,
-              thumbnailUrl: images),
+            title: name,
+            cookTime: totalTime,
+            rating: rating,
+            thumbnailUrl: images,
+            videoUrl: videoUrl,
+          ),
           Container(
             margin: EdgeInsets.symmetric(horizontal: 22, vertical: 10),
             child: Column(

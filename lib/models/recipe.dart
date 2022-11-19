@@ -4,9 +4,15 @@ class Recipe {
   final String rating;
   final String totalTime;
   final String description;
+  final String videoUrl;
 
   Recipe(
-      {this.name, this.images, this.rating, this.totalTime, this.description});
+      {this.name,
+      this.images,
+      this.rating,
+      this.totalTime,
+      this.description,
+      this.videoUrl});
 
   factory Recipe.fromJson(dynamic json) {
     return Recipe(
@@ -16,7 +22,10 @@ class Recipe {
         totalTime: json['total_time_minutes'] != null
             ? json['total_time_minutes'].toString() + " minutes"
             : "30 minutes",
-        description: json['description'] != null ? json['description'] : " ");
+        description: json['description'] != null ? json['description'] : " ",
+        videoUrl: json['original_video_url'] != null
+            ? json['original_video_url']
+            : 'noVideo');
   }
 
   static List<Recipe> recipesFromSnapshot(List snapshot) {
