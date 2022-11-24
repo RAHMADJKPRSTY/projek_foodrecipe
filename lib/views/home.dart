@@ -30,17 +30,21 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Colors.white,
         appBar: AppBar(
-          backgroundColor: Colors.white,
+          backgroundColor: Colors.black,
           title: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Icon(
                 Icons.menu_book,
-                color: Colors.black,
+                color: Colors.white,
               ),
               SizedBox(width: 10),
-              Text('Buku Resep Makanan', style: TextStyle(color: Colors.black))
+              Text('Buku Resep Makanan',
+                  style: TextStyle(
+                    color: Colors.white,
+                  ))
             ],
           ),
         ),
@@ -68,6 +72,8 @@ class _HomePageState extends State<HomePage> {
                               images: _recipes[index].images,
                               description: _recipes[index].description,
                               videoUrl: _recipes[index].videoUrl,
+                              instructions: _recipes[index].instructions,
+                              sections: _recipes[index].sections,
                             ),
                           )),
                     },
